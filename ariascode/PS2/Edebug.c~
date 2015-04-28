@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+#include "physics.h"
+#include "p480.h"
+#include "nrutil.h"
+
+main()
+{
+  /* Grid information */
+  double *r,*dr;
+  int N;
+
+  /* Physics vectors */
+  double *V;
+
+  /* Working variables */
+  int k,match;
+  double x;
+  double E,E1,E2,tol;
+
+  /* Value of pi */
+  double pi;
+  pi=4.*atan(1.);
+
+  /* Input energy bounds */
+  printf("E1="); scanf("%lf",&E1);
+  printf("E2="); scanf("%lf",&E2);
+  
+/* Loop over different input N */
+  while (1) {
+    printf("Search for energy in range (%20.16f,%20.16f):\n",E1,E2);
+    printf("N=");
+    scanf("%d",&N);
+    
+    /* Allocate NR vectors */
+    r=dvector(0,N+1);
+    dr=dvector(0,N+1);
+    V=dvector(0,N+1);
+    
+    /* Construct change of variables information and
+       integrand function for computing V_el-nuc */
+    
+    for (k=0; k<=N; k++) {
+      x=((double) k)/((double) N);
+      r[k] = x*x/(1.-x);
+      dr[k] = 1./(1.-x)/(1.-x)-1.;
+      V[k] = -1./r[k];
+    }
+    /* Special conditions for handling end-points of integration */
+    
+    V[0]=0.;
+    dr[N]=0.;
+    match =0;
+    E=rtbisp480(func_Schrodinger,E1,E2,tol=1e-15,match,V,r,dr,N);
+    printf("Solution from rtbisp480: E=%20.16f\n",E);
+
+    /* Test of zriddrp480 */
+    /* Uncomment lines below when zriddrp480 is ready */
+    /* E=zriddrp480(func_Schrodinger,E1,E2,tol=1e-15, */
+    /*              match,V,r,dr,N); */
+    /* printf("Solution from zriddrp480: E=%20.16f\n",E); */
+
+    /* Clean up vectors before next set is allocated! */
+    free_dvector(r,0,N);
+    free_dvector(dr,0,N);
+    free_dvector(V,0,N);
+  }
+
+}
+

@@ -1,0 +1,7 @@
+%# calculates the LHS of the equation (in this case Schrodinger eqn)
+
+function out = H(W)
+
+out = -0.5*L(W) + cIdag(diag(gbl_Vdual)*cI(W));
+
+endfunction

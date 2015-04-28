@@ -1,0 +1,90 @@
+octave:9> Hatom
+Display all 1875 possibilities? (y or n)
+octave:9> Hatom
+gbl_f = 1
+Ns = 1
+E0 = 78.5694635131429
+   0.3204218146708482
+   0.0000000000003445
+
+   2.0484751472950955
+   0.0000000000034446
+
+   1.2947898265880442
+   0.0000000000344460
+
+   1.0315156468209459
+   0.0000000003444603
+
+   0.9970714023548813
+   0.0000000034446026
+
+   0.9933025364570743
+   0.0000000344460263
+
+   0.9930361395010503
+   0.0000003444602632
+
+   0.9929781840617602
+   0.0000034446026316
+
+   0.9929626833499440
+   0.0000344460263159
+
+   0.9902801990505820
+   0.0003444602631595
+
+   0.9916149825703154
+   0.0034446026315947
+
+
+ans = 77.5348269410986
+ans = 44.4231553726588
+ans = 29.8067374628924
+ans = 23.9158016102321
+ans = 20.9338530648754
+ans = 18.9589672608604
+ans = 17.4166502945129
+ans = 16.1182836055881
+ans = 14.9904897805310
+ans = 13.9970697981313
+angle cosine : 0.402507 and energy : 8.504849
+angle cosine : -0.374608 and energy : 3.281484
+angle cosine : -0.299625 and energy : 1.503922
+angle cosine : -0.260006 and energy : 0.660796
+angle cosine : -0.262390 and energy : 0.252517
+angle cosine : -0.432663 and energy : 0.061998
+angle cosine : 0.043822 and energy : -0.118480
+angle cosine : -0.031460 and energy : -0.239936
+angle cosine : 0.070438 and energy : -0.258164
+angle cosine : -0.204349 and energy : -0.273611
+angle cosine : 0.038414 and energy : -0.274622
+angle cosine : -0.002082 and energy : -0.274372
+angle cosine : -0.000255 and energy : -0.274253
+angle cosine : -0.000048 and energy : -0.274248
+angle cosine : -0.000000 and cg test : 0.000000 and energy : -0.274243
+angle cosine : 0.000029 and cg test : -0.000018 and energy : -0.274242
+angle cosine : 0.000005 and cg test : -0.000000 and energy : -0.274242
+angle cosine : 0.000002 and cg test : 0.000005 and energy : -0.274242
+angle cosine : 0.000010 and cg test : -0.000010 and energy : -0.274242
+angle cosine : -0.000750 and cg test : 0.000963 and energy : -0.274242
+angle cosine : 0.001037 and cg test : -0.001763 and energy : -0.274242
+angle cosine : -0.006780 and cg test : 0.008224 and energy : -0.274242
+angle cosine : 0.014418 and cg test : -0.020684 and energy : -0.274242
+angle cosine : -0.140261 and cg test : 0.184371 and energy : -0.274242
+angle cosine : 0.170805 and cg test : -0.146108 and energy : -0.274242
+angle cosine : 0.018847 and cg test : 0.615873 and energy : -0.274242
+angle cosine : 0.549317 and cg test : -0.595716 and energy : -0.274242
+angle cosine : 0.008101 and cg test : 0.657660 and energy : -0.274242
+angle cosine : 0.501534 and cg test : -0.564765 and energy : -0.274242
+angle cosine : -0.014760 and cg test : 0.617322 and energy : -0.274242
+angle cosine : -0.569098 and cg test : 0.636821 and energy : -0.274242
+angle cosine : 0.002124 and cg test : 0.642601 and energy : -0.274242
+angle cosine : -0.461944 and cg test : 0.500471 and energy : -0.274242
+===State # 1, Energy = -0.231594 ====
+
+Remember to hit <enter> or <spacebar> after each          plot!
+
+m1=31 slice (m2, m3 along left, right                       axes):
+m2=31 slice (m1, m3 along left, right                       axes):
+m3=31 slice (m1, m2 along left, right                       axes):

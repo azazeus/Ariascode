@@ -1,0 +1,8 @@
+%# calculates gradients
+
+function grad=getgrad(W)
+
+N=W'*O(W);
+grad = (H(W) - (O*W*inv(N))*(W'*H(W)))*inv(N);
+
+endfunction

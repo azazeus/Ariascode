@@ -1,0 +1,16 @@
+function out = getE(W)
+
+global gbl_Vdual;
+global gbl_f;
+
+N=W'*O(W);
+A=cI(W)*inv(N);
+B=cI(W);
+n=gbl_f*diagouter(A,B);
+
+out=real(-0.5*gbl_f*sum(diag(W'*L(W*inv(N)))) + gbl_Vdual'*n + \
+	 0.5*n'*cJdag(O(Linv(-4*pi*O(cJ(n)))))+ cJ(excVWN(n))'*O(cJ(n)));
+
+%# n'*cJdag(O(cJ(excVWN(cI(n))))));
+
+endfunction

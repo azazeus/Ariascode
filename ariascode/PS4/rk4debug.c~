@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <math.h>
+#include "p480.h"
+#include "nrutil.h"
+
+void derivs_int(double x, double y[], double dydx[], int k, double f[], double r[], double dr[], int N)
+{ dydx[1] = f[k]*dr[k];
+}
+
+#define Nmx 200000
+main()
+{
+  /* Grid vectors */
+  double *r,*dr,*f;
+
+  /* Working variables */
+  int i,N;
+  double u;
+  double *y,*dydx; /* NR vector for diff eq's */
+  double x,h;
+  int k,dk;
+
+  /* Value of pi */
+  double pi;
+  pi=4.*atan(1.);
+
+  /* Allocate NR vectors for maximum size used */
+  r=dvector(0,Nmx);
+  dr=dvector(0,Nmx);
+  f=dvector(0,Nmx);
+  y=dvector(1,1);
+  dydx=dvector(1,1);
+
+  /* Loop over different integration mesh sizes */
+  for (N=2; N<=Nmx; N*=10) {
+
+    /* Construct change of variables information and
+       integrand function for computing V_el-nuc */
+    for (i=0; i<=N; i++) {
+      u=((double) i)/((double) N);
+      r[i]=1./(1. -u)-1.;
+      dr[i]=1./(1. -u)/(1. -u);
+      f[i]=(-1./r[i])*(exp(-2.*r[i])/pi)*4.*pi*r[i]*r[i];
+    }
+    /* Special conditions for handling end-points of integration */
+    dr[0]=f[0]=0.;
+    dr[N]=f[N]=0.;
+
+
+    /* Runga-Kutta solution using rk4p480(). */
+    /* Note step size (h,dk) is 2 because RK algorithm produces
+       results only at the end points. */
+    h=2./N;
+    dk=2;
+    y[1]=0.;
+    for (k=0; k<=N-2; k+=dk) {
+      x=k*h;
+      derivs_int(x,y,dydx,k,f,r,dr,N);
+      rk4p480(y,dydx,1,x,h,y,derivs_int,k,dk,f,r,dr,N);
+    }
+
+    printf("T,S,RK: %6d %18.14d,%18.14d,%18.14d\n",N,trapint(f,r,dr,N),simpint(f,r,dr,N), y[1]);
+  }
+
+  /* Deallocate NR vectors: Should always clean up space at the end. */
+  free_dvector(r,0,Nmx);
+  free_dvector(dr,0,Nmx);
+  free_dvector(f,0,Nmx);
+  free_dvector(y,1,1);
+  free_dvector(dydx,1,1);
+}
+

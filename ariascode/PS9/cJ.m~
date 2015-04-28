@@ -1,0 +1,18 @@
+% IFFT operator (acting on 3d data sets)
+%
+% Usage: out=cJ(in)
+%
+% in: input 3d data set
+% out: output 3d data set
+%
+% Uses GLOBAL variable(s) ---
+% gbl_S
+function out=cJ(in)
+  global gbl_S;
+
+  %# Operator definition (multiplication by volume)
+out=1/(gbl_S(1)*gbl_S(2)*gbl_S(3))*fftw3(in,gbl_S(1),gbl_S(2),gbl_S(3),-1);
+
+endfunction
+
+

@@ -1,0 +1,4 @@
+double sub(double x, double multiplier){
+  double y=1.000001; 
+  return y;
+}

@@ -1,0 +1,16 @@
+-finline-limit=10000 -ffast-math -mcpu=athlon -m3dnow -fomit-frame-pointer 
+
+OPTS      = -O3 -pg
+LIBRARIES = -lm
+OBJECTS   = broyden.o physics2.o p480.o nrutil.o
+
+
+prog: $(OBJECTS)
+	cc $(OPTS) -o prog $(OBJECTS) $(LIBRARIES)
+
+clean:
+	rm *.o
+
+%.o : %.c
+	cc $(OPTS) -c $<
+
